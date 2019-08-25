@@ -23,6 +23,7 @@ class EventManager extends Component {
     const res = await eventService.fetchEvents();
     this.setState({
       events: res.data.data.events,
+      isEventAvailable: true,
     });
   }
 
@@ -45,15 +46,23 @@ class EventManager extends Component {
     return this.props.user.privilegeLevel === ORGANIZER_ROLE ? (
       <div className="event-manager container">
         <React.Fragment>
+        {this.state.isEventAvailable ? (
           <Events enrollEvent={this.enrollEvent} deleteEvent={this.deleteEvent}
             events={this.state.events} user={this.props.user} />
+        ) : (
+          null
+        )}
           <AddEvent addEvent={this.addEvent} />
         </React.Fragment>
       </div>
     ) : (
         <div className="event-manager container">
+        {this.state.isEventAvailable ? (
           <Events enrollEvent={this.enrollEvent} deleteEvent={this.deleteEvent}
             events={this.state.events} user={this.props.user} />
+        ) : (
+          null
+        )}
         </div>
       )
   }

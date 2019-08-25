@@ -5,7 +5,6 @@ const Users = ({ users = [] }) => {
     users.map(user => {
       return (
         <option value={user.id}>{user.email}</option>
-        // <option><button onClick={() => { onClickUser(user.id) }}>{user.email}</button></option>
       );
 
     })

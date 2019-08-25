@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.BACKEND_URL
-
 async function fetchUers() {
   const query = `{
     users {
@@ -12,7 +10,7 @@ async function fetchUers() {
       privilegeLevel
     }
   }`;
-  return axios.post(`http://${BACKEND_URL}:8000/graphql`, {
+  return axios.post(`http://localhost:8000/graphql`, {
     query
   });
 }

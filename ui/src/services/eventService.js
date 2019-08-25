@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const BACKEND_URL = process.env.BACKEND_URL
-
 async function fetchEvents() {
   const query = `{
     events {
@@ -19,7 +17,7 @@ async function fetchEvents() {
       }
     }
   }`;
-  return axios.post(`http://${BACKEND_URL}:8000/graphql`, {
+  return axios.post(`http://localhost:8000/graphql`, {
     query
   });
 }
@@ -40,7 +38,7 @@ async function createEvent(event, userId) {
     },
     userId: userId
   }
-  return axios.post(`http://${BACKEND_URL}:8000/graphql`, {
+  return axios.post(`http://localhost:8000/graphql`, {
     query,
     variables
   });
@@ -51,7 +49,7 @@ async function deleteEvent(eventId) {
   deleteEvent(eventId: $eventId)
 }`;
 
-  return axios.post(`http://${BACKEND_URL}:8000/graphql`, {
+  return axios.post(`http://localhost:8000/graphql`, {
     query,
     variables: {
       eventId: eventId,
@@ -66,7 +64,7 @@ async function enrollEvent(userId, eventId) {
     }
   }`;
 
-  return axios.post(`http://${BACKEND_URL}:8000/graphql`, {
+  return axios.post(`http://localhost:8000/graphql`, {
     query,
     variables: {
       enrollment:{
