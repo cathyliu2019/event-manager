@@ -2,7 +2,7 @@
 
 
 
-A Event Manager web application that allow employees to organize events and join events.
+An Event Manager web application that allow employees to organize events and join events.
 
 ## Requirements
 
