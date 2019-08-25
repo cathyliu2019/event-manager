@@ -1,0 +1,46 @@
+---
+version: '2.0'
+services:
+  events-db:
+    image: postgres:11.5
+    restart: always
+    # opening port for development use
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+      # - './scripts/seed-todos.sql:/docker-entrypoint-initdb.d/seed-todos.sql'
+    environment:
+      POSTGRES_USER: cathy
+      POSTGRES_PASSWORD: password
+
+  backend:
+    build: ./backend
+    ports:
+      - '8000:8000'
+    # volumes:
+      # - ./backend:/app
+    command: 'yarn start:dev'
+    environment:
+      POSTGRES_HOST: events-db
+      POSTGRES_USER: cathy
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: cathy
+    depends_on:
+      - events-db
+
+  ui:
+    build: ./ui
+    ports:
+      - '3000:3000'
+    # volumes:
+    #   - ./ui:/app
+    command: 'yarn start'
+    environment:
+      PORT: 3000
+      BACKEND_URL: backend
+    depends_on:
+      - backend
+volumes:
+  postgres:
+    
