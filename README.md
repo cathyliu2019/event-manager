@@ -10,10 +10,6 @@ The application is built in `react` `node.js`
 
 ## Setup
 
-Install `nvm`: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash`
-
-Install `node`: `nvm install 10.16.0`
-
 Install `docker` and `docker-compose`
 
 ## Run
