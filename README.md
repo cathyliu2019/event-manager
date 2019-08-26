@@ -9,7 +9,7 @@ An Event Manager web application that allow employees to organize events and joi
 The application is built in `react` `node.js`
 
 ## Design
-![Architecture](./Architecture.png)
+![archi](./archi.PNG)
 
 ## Setup
 
